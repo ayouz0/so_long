@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   make_moves.c                                       :+:      :+:    :+:   */
+/*   make_moves_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aaitabde <aaitabde@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 09:41:18 by aaitabde          #+#    #+#             */
-/*   Updated: 2025/01/30 22:27:33 by aaitabde         ###   ########.fr       */
+/*   Updated: 2025/01/30 22:30:10 by aaitabde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	update_moves(int *count)
 {
 	int	i;
 
 	i = 100;
-	while (i-- > 0)
-		write(1, "\n", 1);
+	// while (i-- > 0)
+	// 	write(1, "\n", 1);
 	write(1, "Moves : ", 7);
 	ft_putnbr_fd(*count, 1);
 	(*count)++;
@@ -37,7 +37,7 @@ void	exit_handeling(t_game *game_info, int x, int y)
 		put_image(game_info, game_info->mlx_i.p_img, (px + x), (py + y));
 		put_image(game_info, game_info->mlx_i.bg_img, px, py);
 		free_game(game_info);
-		write(1, "YOU WIN ✅!\n", 12);
+		write(1, "YOU WIN ✅!\n", 13);
 		exit(0);
 	}
 	else

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_utils_1.c                                      :+:      :+:    :+:   */
+/*   map_utils_1_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aaitabde <aaitabde@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 15:56:02 by aaitabde          #+#    #+#             */
-/*   Updated: 2025/01/30 22:42:12 by aaitabde         ###   ########.fr       */
+/*   Updated: 2025/01/30 22:42:36 by aaitabde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	add_element(t_game *game_info, int y, int x)
 {
@@ -30,6 +30,12 @@ void	add_element(t_game *game_info, int y, int x)
 		game_info->map_i.py = y;
 		game_info->map_i.px = x;
 		game_info->map_i.p++;
+	}
+	else if (elem == 'H')
+	{
+		game_info->map_i.hy = y;
+		game_info->map_i.hx = x;
+		game_info->map_i.h++;
 	}
 	else
 		game_info->map_i.other++;
