@@ -6,7 +6,7 @@
 #    By: aaitabde <aaitabde@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/22 14:28:04 by aaitabde          #+#    #+#              #
-#    Updated: 2025/01/30 20:44:22 by aaitabde         ###   ########.fr        #
+#    Updated: 2025/01/31 10:48:56 by aaitabde         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ BLUE = \033[1;34m
 CYAN = \033[1;36m
 MAGENTA = \033[1;35m
 
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -g -fsanitize=address
 
 SRC = mandatory/error_utils.c mandatory/general_utils.c mandatory/main.c mandatory/map_utils.c mandatory/get_next_line/get_next_line.c\
 	mandatory/get_next_line/get_next_line_utils.c mandatory/map_utils_1.c mandatory/so_long.c mandatory/game_running.c mandatory/make_moves.c\

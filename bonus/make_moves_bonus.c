@@ -6,7 +6,7 @@
 /*   By: aaitabde <aaitabde@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 09:41:18 by aaitabde          #+#    #+#             */
-/*   Updated: 2025/01/30 22:30:10 by aaitabde         ###   ########.fr       */
+/*   Updated: 2025/01/31 11:56:15 by aaitabde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ void	update_moves(int *count)
 	int	i;
 
 	i = 100;
-	// while (i-- > 0)
-	// 	write(1, "\n", 1);
-	write(1, "Moves : ", 7);
+	while (i-- > 0)
+		write(1, "\n", 1);
+	write(1, "Moves : \a", 9);
 	ft_putnbr_fd(*count, 1);
 	(*count)++;
 	write(1, "\n", 1);
@@ -103,6 +103,12 @@ void	make_move(t_game *game_info, int y, int x, int *count)
 		return ;
 	else if (game_info->map_i.map[py + y][px + x] != '1')
 	{
+		if (game_info->map_i.map[py + y][px + x] == 'H')
+		{
+			destroy_mlx(game_info);
+			write(1, "Hisoka you bastard!\a\n", 22);
+			exit(1);
+		}
 		move_player(game_info, x, y);
 		if (px == game_info->map_i.ex && py == game_info->map_i.ey)
 		{

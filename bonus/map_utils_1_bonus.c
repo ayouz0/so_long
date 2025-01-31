@@ -6,7 +6,7 @@
 /*   By: aaitabde <aaitabde@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 15:56:02 by aaitabde          #+#    #+#             */
-/*   Updated: 2025/01/30 22:42:36 by aaitabde         ###   ########.fr       */
+/*   Updated: 2025/01/31 11:57:45 by aaitabde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ char	**map_copier(t_game *game_info)
 
 void	validate_path(t_path_data *path, int y, int x)
 {
-	if (path->map[y][x] == '1' || path->map[y][x] == 's')
+	if (path->map[y][x] == '1' || path->map[y][x] == 's' || path->map[y][x] == 'H')
 		return ;
 	if (path->map[y][x] == 'C')
 		path->c--;
