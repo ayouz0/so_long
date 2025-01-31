@@ -6,7 +6,7 @@
 /*   By: aaitabde <aaitabde@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 10:22:04 by aaitabde          #+#    #+#             */
-/*   Updated: 2025/01/30 20:43:56 by aaitabde         ###   ########.fr       */
+/*   Updated: 2025/01/31 18:01:21 by aaitabde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@
 typedef struct s_mlx
 {
 	void	*p_img;
+	void	*ps_img;
 	void	*h_img;
 	void	*tw_img;
 	void	*bw_img;

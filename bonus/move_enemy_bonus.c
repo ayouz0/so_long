@@ -6,7 +6,7 @@
 /*   By: aaitabde <aaitabde@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 17:55:10 by aaitabde          #+#    #+#             */
-/*   Updated: 2025/01/31 15:26:22 by aaitabde         ###   ########.fr       */
+/*   Updated: 2025/01/31 19:00:10 by aaitabde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void	move_it(t_game *game_info, int y, int x)
 	game_info->map_i.map[game_info->map_i.hy][game_info->map_i.hx] = '0';
 	put_image(game_info, game_info->mlx_i.h_img, game_info->map_i.hx + x, game_info->map_i.hy + y);
 	put_image(game_info, game_info->mlx_i.bg_img, game_info->map_i.hx, game_info->map_i.hy);
+	game_info->map_i.hx += x;
+	game_info->map_i.hy += y;
 	if (game_info->map_i.hy == game_info->map_i.py \
 		&& game_info->map_i.hx == game_info->map_i.px)
 	{
@@ -47,7 +49,6 @@ void	get_next_enemy(t_game *game_info, int h)
 		{
 			if (game_info->map_i.map[y][x] == 'H')
 			{
-				printf("h == %d\n", game_info->map_i.h);
 				if (h < game_info->map_i.h)
 					h++;
 				else
@@ -66,33 +67,71 @@ void	get_next_enemy(t_game *game_info, int h)
 void	attack(t_game *game_info)
 {
 	int h;
-	static int frame;
-	if (frame != 4600)
-	{
-		frame++;
-		return ;
-	}
+	static int direction;
+
 	h = game_info->map_i.h;
 	while (h)
 	{
 		get_next_enemy(game_info, h);
-		 if ((game_info->map_i.map[game_info->map_i.hy][game_info->map_i.hx + 1] == '0' || \
-		game_info->map_i.map[game_info->map_i.hy][game_info->map_i.hx + 1] == 'P') && (game_info->map_i.map[game_info->map_i.hy][game_info->map_i.hx - 1] != 'P'))
-			move_it(game_info, 0 ,1);
+		if (!direction)
+			direction = 1;
+		if (game_info->map_i.map[game_info->map_i.hy][game_info->map_i.hx + 1] == '1')
+			direction = -1;
+		else if (game_info->map_i.map[game_info->map_i.hy][game_info->map_i.hx - 1] == '1')
+			direction = 1;
+		if ((game_info->map_i.map[game_info->map_i.hy][game_info->map_i.hx + 1] == '0' || \
+		game_info->map_i.map[game_info->map_i.hy][game_info->map_i.hx + 1] == 'P') && direction == 1)
+			move_it(game_info, 0, 1);
 		else if ((game_info->map_i.map[game_info->map_i.hy][game_info->map_i.hx - 1] == '0' || \
-		game_info->map_i.map[game_info->map_i.hy][game_info->map_i.hx - 1] == 'P'))
-			move_it(game_info, 0 ,-1);
+		game_info->map_i.map[game_info->map_i.hy][game_info->map_i.hx - 1] == 'P') && direction == -1)
+		{
+			move_it(game_info, 0, -1);
+			direction = -1;
+		}
 		h--;
 	}
-	printf("-----------------------------------\n");
-	// printf("hx == %d\n", game_info->map_i.hx);
-	printf("hy == %d\n", game_info->map_i.hy);
-	printf("-----------------------------------\n");
-	frame = 0;
 }
 
+
+void re_render(t_game *game_info)
+{
+   	char *frames[7];
+	static int frame;
+	
+	frames[0] = "bonus/assets/player/Player.xpm";
+	frames[1] = "bonus/assets/player/Player1.xpm";
+	frames[2] = "bonus/assets/player/Player2.xpm";
+	frames[3] = "bonus/assets/player/Player3.xpm";
+	frames[4] = "bonus/assets/player/Player4.xpm";
+	frames[5] = "bonus/assets/player/Player5.xpm";
+	frames[6] = "bonus/assets/player/Player6.xpm";
+	
+	game_info->mlx_i.ps_img = mlx_xpm_file_to_image(game_info->mlx,
+													frames[frame],
+													&game_info->mlx_i.img_x,
+													&game_info->mlx_i.img_y);
+	put_image(game_info, game_info->mlx_i.bg_img, game_info->map_i.px, game_info->map_i.py);
+	put_image(game_info, game_info->mlx_i.ps_img, game_info->map_i.px, game_info->map_i.py);
+	frame = frame +1;
+	if (frame == 7)
+		frame = 0;
+}
 int	move_enemy(t_game *game_info)
 {
+	static int frame = 0;
+	static int render_counter = 0;
+
+	if (render_counter == 0)
+		re_render(game_info);
+
+	render_counter = (render_counter + 1) % 1500;
+
+	if (frame != 1600)
+	{
+		frame++;
+		return (1);
+	}
 	attack(game_info);
+	frame = 0;
 	return (0);
 }
