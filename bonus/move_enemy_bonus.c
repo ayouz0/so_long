@@ -6,7 +6,7 @@
 /*   By: aaitabde <aaitabde@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 17:55:10 by aaitabde          #+#    #+#             */
-/*   Updated: 2025/01/31 12:07:15 by aaitabde         ###   ########.fr       */
+/*   Updated: 2025/01/31 15:26:22 by aaitabde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,13 @@
 void	move_it(t_game *game_info, int y, int x)
 {
 	int i;
-
 	i = 0;
-	if (game_info->map_i.map[game_info->map_i.hy + y][game_info->map_i.hx + x] == '1')
+	if (game_info->map_i.map[game_info->map_i.hy + y][game_info->map_i.hx + x] == 'H')
 		return ;
 	game_info->map_i.map[game_info->map_i.hy + y][game_info->map_i.hx + x] = 'H';
 	game_info->map_i.map[game_info->map_i.hy][game_info->map_i.hx] = '0';
 	put_image(game_info, game_info->mlx_i.h_img, game_info->map_i.hx + x, game_info->map_i.hy + y);
 	put_image(game_info, game_info->mlx_i.bg_img, game_info->map_i.hx, game_info->map_i.hy);
-	game_info->map_i.hy += y;
-	game_info->map_i.hx += x;
 	if (game_info->map_i.hy == game_info->map_i.py \
 		&& game_info->map_i.hx == game_info->map_i.px)
 	{
@@ -37,7 +34,7 @@ void	move_it(t_game *game_info, int y, int x)
 	}
 }
 
-void	get_enemy_cords(t_game *game_info, int h)
+void	get_next_enemy(t_game *game_info, int h)
 {
 	int x;
 	int y;
@@ -50,6 +47,7 @@ void	get_enemy_cords(t_game *game_info, int h)
 		{
 			if (game_info->map_i.map[y][x] == 'H')
 			{
+				printf("h == %d\n", game_info->map_i.h);
 				if (h < game_info->map_i.h)
 					h++;
 				else
@@ -64,31 +62,33 @@ void	get_enemy_cords(t_game *game_info, int h)
 	}
 	game_info->map_i.hx = x;
 	game_info->map_i.hy = y;
-
 }
 void	attack(t_game *game_info)
 {
 	int h;
-	
+	static int frame;
+	if (frame != 4600)
+	{
+		frame++;
+		return ;
+	}
 	h = game_info->map_i.h;
 	while (h)
 	{
-		get_enemy_cords(game_info, h);
-		if ((game_info->map_i.map[game_info->map_i.hy + 1][game_info->map_i.hx] != '0' && \
-		game_info->map_i.map[game_info->map_i.hy + 1][game_info->map_i.hx] == 'P'))
-			 move_it(game_info, 1 ,0);
-		else if ((game_info->map_i.map[game_info->map_i.hy - 1][game_info->map_i.hx] != '0' || \
-		game_info->map_i.map[game_info->map_i.hy - 1][game_info->map_i.hx] == 'P'))
-			move_it(game_info, -1 ,0);
-		else if (game_info->map_i.map[game_info->map_i.hy][game_info->map_i.hx + 1] != '0' || \
-		game_info->map_i.map[game_info->map_i.hy][game_info->map_i.hx + 1] == 'P')
+		get_next_enemy(game_info, h);
+		 if ((game_info->map_i.map[game_info->map_i.hy][game_info->map_i.hx + 1] == '0' || \
+		game_info->map_i.map[game_info->map_i.hy][game_info->map_i.hx + 1] == 'P') && (game_info->map_i.map[game_info->map_i.hy][game_info->map_i.hx - 1] != 'P'))
 			move_it(game_info, 0 ,1);
-		else if ((game_info->map_i.map[game_info->map_i.hy][game_info->map_i.hx - 1] != '0' || \
+		else if ((game_info->map_i.map[game_info->map_i.hy][game_info->map_i.hx - 1] == '0' || \
 		game_info->map_i.map[game_info->map_i.hy][game_info->map_i.hx - 1] == 'P'))
 			move_it(game_info, 0 ,-1);
 		h--;
 	}
-	usleep(100000);
+	printf("-----------------------------------\n");
+	// printf("hx == %d\n", game_info->map_i.hx);
+	printf("hy == %d\n", game_info->map_i.hy);
+	printf("-----------------------------------\n");
+	frame = 0;
 }
 
 int	move_enemy(t_game *game_info)
