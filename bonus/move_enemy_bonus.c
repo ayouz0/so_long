@@ -6,18 +6,24 @@
 /*   By: aaitabde <aaitabde@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 17:55:10 by aaitabde          #+#    #+#             */
-/*   Updated: 2025/01/31 19:00:10 by aaitabde         ###   ########.fr       */
+/*   Updated: 2025/01/31 21:25:20 by aaitabde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
 
-void	move_it(t_game *game_info, int y, int x)
+void	move_it(t_game *game_info, int y, int x, int direction)
 {
 	int i;
 	i = 0;
 	if (game_info->map_i.map[game_info->map_i.hy + y][game_info->map_i.hx + x] == 'H')
 		return ;
+	if (direction == 1)
+		game_info->mlx_i.h_img = mlx_xpm_file_to_image(game_info->mlx, \
+					"bonus/assets/enemy.xpm", &game_info->mlx_i.img_x, &game_info->mlx_i.img_y);
+	if (direction == -1)
+		game_info->mlx_i.h_img = mlx_xpm_file_to_image(game_info->mlx, \
+					"bonus/assets/enemyl.xpm", &game_info->mlx_i.img_x, &game_info->mlx_i.img_y);
 	game_info->map_i.map[game_info->map_i.hy + y][game_info->map_i.hx + x] = 'H';
 	game_info->map_i.map[game_info->map_i.hy][game_info->map_i.hx] = '0';
 	put_image(game_info, game_info->mlx_i.h_img, game_info->map_i.hx + x, game_info->map_i.hy + y);
@@ -81,11 +87,11 @@ void	attack(t_game *game_info)
 			direction = 1;
 		if ((game_info->map_i.map[game_info->map_i.hy][game_info->map_i.hx + 1] == '0' || \
 		game_info->map_i.map[game_info->map_i.hy][game_info->map_i.hx + 1] == 'P') && direction == 1)
-			move_it(game_info, 0, 1);
+			move_it(game_info, 0, 1, direction);
 		else if ((game_info->map_i.map[game_info->map_i.hy][game_info->map_i.hx - 1] == '0' || \
 		game_info->map_i.map[game_info->map_i.hy][game_info->map_i.hx - 1] == 'P') && direction == -1)
 		{
-			move_it(game_info, 0, -1);
+			move_it(game_info, 0, -1, direction);
 			direction = -1;
 		}
 		h--;

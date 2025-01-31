@@ -6,7 +6,7 @@
 /*   By: aaitabde <aaitabde@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 10:06:55 by aaitabde          #+#    #+#             */
-/*   Updated: 2025/01/28 11:46:50 by aaitabde         ###   ########.fr       */
+/*   Updated: 2025/01/31 20:51:43 by aaitabde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ void	put_to_window(t_game *game_info, int y, int x)
 		put_image(game_info, game_info->mlx_i.e_img, x, y);
 	else if (to_put == 'H')
 		put_image(game_info, game_info->mlx_i.h_img, x, y);
-	
 }
 
 void	prep_map(t_game *game_info)

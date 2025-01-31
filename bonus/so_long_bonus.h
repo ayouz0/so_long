@@ -6,7 +6,7 @@
 /*   By: aaitabde <aaitabde@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 10:22:04 by aaitabde          #+#    #+#             */
-/*   Updated: 2025/01/31 18:01:21 by aaitabde         ###   ########.fr       */
+/*   Updated: 2025/01/31 20:48:17 by aaitabde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,7 @@ typedef struct s_game
 // General Utils
 int		ft_strncmp(char *s1, char *s2, size_t n);
 void	ft_putnbr_fd(int n, int fd);
+char	*ft_itoa(int n);
 
 // Error Utils
 void	print_error(char *str, int exit_stat);

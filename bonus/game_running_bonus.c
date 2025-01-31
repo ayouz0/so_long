@@ -6,7 +6,7 @@
 /*   By: aaitabde <aaitabde@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 09:39:58 by aaitabde          #+#    #+#             */
-/*   Updated: 2025/01/30 20:48:50 by aaitabde         ###   ########.fr       */
+/*   Updated: 2025/01/31 20:45:18 by aaitabde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,14 @@ int	handle_keypress(int key, t_game	*game_info)
 
 int	exit_game(t_game *game_info)
 {
-	free_game(game_info);
-	exit(1);
+	int i;
+
+	i = 0;
+	destroy_mlx(game_info);
+	while (i < game_info->map_i.height)
+		free(game_info->map_i.map[i++]);
+	free(game_info->map_i.map);
+	exit (0);
 	return (0);
 }
 

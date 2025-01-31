@@ -6,7 +6,7 @@
 #    By: aaitabde <aaitabde@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/22 14:28:04 by aaitabde          #+#    #+#              #
-#    Updated: 2025/01/31 17:59:38 by aaitabde         ###   ########.fr        #
+#    Updated: 2025/01/31 20:59:15 by aaitabde         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ SRC = mandatory/error_utils.c mandatory/general_utils.c mandatory/main.c mandato
 
 SRCB = bonus/error_utils_bonus.c bonus/general_utils_bonus.c bonus/main_bonus.c bonus/map_utils_bonus.c bonus/get_next_line/get_next_line_bonus.c\
 	bonus/get_next_line/get_next_line_utils_bonus.c bonus/map_utils_1_bonus.c bonus/so_long_bonus.c bonus/game_running_bonus.c bonus/make_moves_bonus.c\
-	bonus/init_imgs_bonus.c bonus/map_utils_2_bonus.c bonus/move_enemy_bonus.c
+	bonus/init_imgs_bonus.c bonus/map_utils_2_bonus.c bonus/move_enemy_bonus.c bonus/general_utils1_bonus.c
 OBJ = ${SRC:.c=.o}
 
 BOBJ = ${SRCB:.c=.o}
