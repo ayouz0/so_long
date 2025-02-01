@@ -6,7 +6,7 @@
 #    By: aaitabde <aaitabde@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/22 14:28:04 by aaitabde          #+#    #+#              #
-#    Updated: 2025/02/01 18:03:20 by aaitabde         ###   ########.fr        #
+#    Updated: 2025/02/01 19:24:30 by aaitabde         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,4 +65,4 @@ clean :
 re : fclean all
 
 fclean : clean
-	@rm -f $(NAME)
+	@rm -f $(NAME) $(BONUS)
