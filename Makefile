@@ -6,7 +6,7 @@
 #    By: aaitabde <aaitabde@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/22 14:28:04 by aaitabde          #+#    #+#              #
-#    Updated: 2025/02/01 19:24:30 by aaitabde         ###   ########.fr        #
+#    Updated: 2025/02/01 22:27:06 by aaitabde         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ BLUE = \033[1;34m
 CYAN = \033[1;36m
 MAGENTA = \033[1;35m
 
-CFLAGS =  -g -fsanitize=address
+CFLAGS =  -Wall -Wextra -Werror
 
 SRC = mandatory/error_utils.c mandatory/general_utils.c mandatory/main.c mandatory/map_utils.c mandatory/get_next_line/get_next_line.c\
 	mandatory/get_next_line/get_next_line_utils.c mandatory/map_utils_1.c mandatory/so_long.c mandatory/game_running.c mandatory/make_moves.c\
@@ -45,7 +45,7 @@ $(NAME) : $(OBJ)
 	@echo "$(MAGENTA)──────────────────────────────────────────────$(RESET_COLOR)"
 	@echo "$(YELLOW)To execute, run: ./$(NAME)$(RESET_COLOR)"
 
-$(BONUS) : $(BOBJ)
+$(BONUS) : $(BOBJ) 
 	$(CC) $(CFLAGS) $(BOBJ) -lmlx -framework OpenGL -framework AppKit -o $(BONUS)
 	@echo "$(MAGENTA)──────────────────────────────────────────────$(RESET_COLOR)"
 	@echo "$(GREEN)🎉✨ Build succeeded! $(RESET_COLOR)"
@@ -66,3 +66,6 @@ re : fclean all
 
 fclean : clean
 	@rm -f $(NAME) $(BONUS)
+
+.PHONY : clean
+             

@@ -6,7 +6,7 @@
 /*   By: aaitabde <aaitabde@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 10:21:42 by aaitabde          #+#    #+#             */
-/*   Updated: 2025/02/01 17:21:26 by aaitabde         ###   ########.fr       */
+/*   Updated: 2025/02/01 23:16:30 by aaitabde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,19 +43,20 @@ int	main(int ac, char **av)
 	t_game	*game_info;
 
 	if (ac != 2)
-		return (0);
+		print_error("Error\nusage : ./so_long \033[31mNAME\033[0m.ber\n", 1);
 	if (!(ft_strlen(av[1]) > 4 && \
 	!(ft_strncmp(av[1] + (ft_strlen(av[1]) - 4), ".ber", 4))))
-		print_error("Error: invalid map\n", 1);
+		print_error("\033[31mError:\033[0m\ninvalid map name\n", 1);
 	game_info = malloc(sizeof(t_game));
 	if (!game_info)
-		print_errno("Error ");
+		print_errno("\033[31mError:\033[0m");
 	get_map_info(av[1], game_info);
 	game_info->map_i.width = map_validity(game_info);
-	if (!game_info->map_i.width || !map_elements(game_info))
-		get_out("Error: invalid map\n", game_info);
+	if (!game_info->map_i.width || !map_elements(game_info) \
+		|| game_info->map_i.height > 30)
+		get_out("\033[31mError:\033[0m\ninvalid map\n", game_info);
 	if (!check_path(game_info))
-		get_out("Error: invalid path\n", game_info);
+		get_out("\033[31mError:\033[0m\ninvalid path\n", game_info);
 	init_game(game_info);
 	let_us_play(game_info);
 	exit(0);

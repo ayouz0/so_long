@@ -6,7 +6,7 @@
 /*   By: aaitabde <aaitabde@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 11:53:46 by aaitabde          #+#    #+#             */
-/*   Updated: 2025/01/27 15:36:53 by aaitabde         ###   ########.fr       */
+/*   Updated: 2025/02/01 20:33:44 by aaitabde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,18 @@ void	get_map_info(char *map_name, t_game *game_info)
 		print_errno("Error");
 	game_info->map_i.height = get_height(fd);
 	if (game_info->map_i.height == 0)
-		print_error("Error: No Empty Maps Please!\n", 1);
+	{
+		close(fd);
+		print_error("Error\n No Empty Maps Please!\n", 1);
+	}
 	fd = reset_offset(fd, map_name);
 	game_info->map_i.map = \
 	malloc(sizeof(char *) * (game_info->map_i.height + 1));
 	if (!(game_info->map_i.map))
-		print_errno("Error");
+	{
+		close(fd);
+		print_errno("Error\n");
+	}
 	game_info->map_i.map[game_info->map_i.height] = NULL;
 	i = 0;
 	read_map(game_info, fd);

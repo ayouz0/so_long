@@ -6,7 +6,7 @@
 /*   By: aaitabde <aaitabde@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 15:37:19 by aaitabde          #+#    #+#             */
-/*   Updated: 2025/01/30 22:40:59 by aaitabde         ###   ########.fr       */
+/*   Updated: 2025/02/01 20:44:03 by aaitabde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,11 +77,12 @@ int	map_validity(t_game *game_info)
 	if (!check_for_ones(map[i]))
 		return (0);
 	line_len = ft_strlen(map[0]);
-	while (map[i + 1])
+	while (map[i])
 	{
 		if (line_len != ft_strlen(map[i++]))
 			return (0);
 	}
+	i--;
 	if (!check_for_ones(map[i]))
 		return (0);
 	return (line_len);
