@@ -6,7 +6,7 @@
 /*   By: aaitabde <aaitabde@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 10:21:42 by aaitabde          #+#    #+#             */
-/*   Updated: 2025/01/30 17:28:14 by aaitabde         ###   ########.fr       */
+/*   Updated: 2025/02/01 17:21:26 by aaitabde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	init_game(t_game *game_info)
 	game_info->map_i.width * 48, game_info->map_i.height * 48, "so_long");
 	init_imgs(game_info);
 	init_map(game_info);
-} 
+}
 
 void	get_out(char *str, t_game *game_info)
 {

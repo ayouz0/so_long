@@ -6,7 +6,7 @@
 /*   By: aaitabde <aaitabde@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 09:41:18 by aaitabde          #+#    #+#             */
-/*   Updated: 2025/01/31 21:00:40 by aaitabde         ###   ########.fr       */
+/*   Updated: 2025/02/01 19:20:15 by aaitabde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,23 +101,16 @@ void	make_move(t_game *game_info, int y, int x, int *count)
 	else if (game_info->map_i.map[py + y][px + x] != '1')
 	{
 		if (game_info->map_i.map[py + y][px + x] == 'H')
-		{
-			destroy_mlx(game_info);
-			write(1, "Hisoka you bastard!\a\n", 22);
-			exit(1);
-		}
+			(write(1, "Hisoka you bastard!\a\n", 22), exit(1), \
+			destroy_mlx(game_info));
 		move_player(game_info, x, y);
 		if (px == game_info->map_i.ex && py == game_info->map_i.ey)
 		{
-			game_info->map_i.map[py][px] = 'E';
-			game_info->map_i.map[py + y][px + x] = 'P';
+			replace(game_info, y, x, 'E');
 			put_image(game_info, game_info->mlx_i.e_img, px, py);
 		}
 		else
-		{
-			game_info->map_i.map[py][px] = '0';
-			game_info->map_i.map[py + y][px + x] = 'P';
-		}
+			replace(game_info, y, x, '0');
 		game_info->map_i.px += x;
 		game_info->map_i.py += y;
 		update_moves(count, game_info);

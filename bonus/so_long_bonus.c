@@ -6,7 +6,7 @@
 /*   By: aaitabde <aaitabde@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 10:06:55 by aaitabde          #+#    #+#             */
-/*   Updated: 2025/01/31 20:51:43 by aaitabde         ###   ########.fr       */
+/*   Updated: 2025/02/01 17:24:11 by aaitabde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ void	put_to_window(t_game *game_info, int y, int x)
 	char	to_put;
 
 	to_put = game_info->map_i.map[y][x];
-	if (to_put == '1' && x != 0 && y != 0 && x != game_info->map_i.width - 1\
-		&& y != game_info->map_i.height - 1)
+	if (to_put == '1' && x != 0 && y != 0 && x != game_info->map_i.width - 1 \
+	&& y != game_info->map_i.height - 1)
 	{
 		if (game_info->map_i.map[y - 1][x] != '1' || y == 1)
 			put_image(game_info, game_info->mlx_i.d_img, x, y);

@@ -6,7 +6,7 @@
 /*   By: aaitabde <aaitabde@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 09:39:58 by aaitabde          #+#    #+#             */
-/*   Updated: 2025/01/31 20:45:18 by aaitabde         ###   ########.fr       */
+/*   Updated: 2025/02/01 17:20:59 by aaitabde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ int	handle_keypress(int key, t_game	*game_info)
 {
 	static int	count;
 
+	if (!count)
+		count = 1;
 	if (key == MOVE_UP)
 		make_move(game_info, -1, 0, &count);
 	else if (key == MOVE_DOWN)
@@ -61,7 +63,7 @@ int	handle_keypress(int key, t_game	*game_info)
 
 int	exit_game(t_game *game_info)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	destroy_mlx(game_info);
