@@ -6,7 +6,7 @@
 /*   By: aaitabde <aaitabde@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 15:56:02 by aaitabde          #+#    #+#             */
-/*   Updated: 2025/02/01 17:21:39 by aaitabde         ###   ########.fr       */
+/*   Updated: 2025/02/03 13:18:38 by aaitabde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,6 @@ short	closed_rectangular_map(char **map)
 			return (0);
 		j++;
 	}
-	if (j > end)
-		return (0);
 	return (1);
 }
 

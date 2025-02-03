@@ -6,7 +6,7 @@
 #    By: aaitabde <aaitabde@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/22 14:28:04 by aaitabde          #+#    #+#              #
-#    Updated: 2025/02/01 22:27:06 by aaitabde         ###   ########.fr        #
+#    Updated: 2025/02/03 14:02:48 by aaitabde         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,10 @@ OBJ = ${SRC:.c=.o}
 
 BOBJ = ${SRCB:.c=.o}
 
-%.o:%.c mandatory/so_long.h bonus/so_long_bonus.h
+mandatory/%.o:mandatory/%.c mandatory/so_long.h
+	$(CC) $(CFLAGS) -c $< -o $@
+
+bonus/%.o:bonus/%.c bonus/so_long_bonus.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME) : $(OBJ)

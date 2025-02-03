@@ -6,7 +6,7 @@
 /*   By: aaitabde <aaitabde@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 11:53:46 by aaitabde          #+#    #+#             */
-/*   Updated: 2025/02/01 17:00:08 by aaitabde         ###   ########.fr       */
+/*   Updated: 2025/02/03 13:48:11 by aaitabde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,14 @@ void	get_map_info(char *map_name, t_game *game_info)
 	i = 0;
 	read_map(game_info, fd);
 	close(fd);
+}
+
+void	update_moves(int *count, t_game *game_info)
+{
+	char	*cnt;
+
+	cnt = ft_itoa(*count);
+	(*count)++;
+	put_image(game_info, game_info->mlx_i.tlw_img, 0, 0);
+	mlx_string_put(game_info->mlx, game_info->w_mlx, 0, 0, 10, cnt);
 }

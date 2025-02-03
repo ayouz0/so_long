@@ -6,7 +6,7 @@
 /*   By: aaitabde <aaitabde@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 10:22:04 by aaitabde          #+#    #+#             */
-/*   Updated: 2025/02/01 19:20:38 by aaitabde         ###   ########.fr       */
+/*   Updated: 2025/02/03 13:51:13 by aaitabde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,4 +134,5 @@ int		move_enemy(t_game *game_info);
 void	get_next_enemy(t_game *game_info, int h);
 void	norm_func_ifs(t_game *game_info, int direction);
 void	replace(t_game *game_info, int y, int x, char repl);
+void	update_moves(int *count, t_game *game_info);
 #endif

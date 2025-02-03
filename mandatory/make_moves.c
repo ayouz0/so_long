@@ -6,7 +6,7 @@
 /*   By: aaitabde <aaitabde@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 09:41:18 by aaitabde          #+#    #+#             */
-/*   Updated: 2025/01/31 20:54:27 by aaitabde         ###   ########.fr       */
+/*   Updated: 2025/02/03 13:32:30 by aaitabde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,31 @@ void	exit_handeling(t_game *game_info, int x, int y)
 	game_info->map_i.px += x;
 	game_info->map_i.py += y;
 }
+void	norm_func_move(t_game *game_info, int y, int x)
+{
+	int	px;
+	int	py;
 
+	px = game_info->map_i.px;
+	py = game_info->map_i.py;
+	if (px == game_info->map_i.ex && py == game_info->map_i.ey)
+	{
+		game_info->map_i.map[py][px] = 'E';
+		game_info->map_i.map[py + y][px + x] = 'P';
+		put_image(game_info, game_info->mlx_i.bg_img, px + x, py + y);
+		put_image(game_info, game_info->mlx_i.p_img, px + x, py + y);
+		put_image(game_info, game_info->mlx_i.bg_img, px, py);
+		put_image(game_info, game_info->mlx_i.e_img, px, py);
+	}
+	else
+	{
+		game_info->map_i.map[py][px] = '0';
+		game_info->map_i.map[py + y][px + x] = 'P';
+		put_image(game_info, game_info->mlx_i.bg_img, px + x, py + y);
+		put_image(game_info, game_info->mlx_i.p_img, px + x, py + y);
+		put_image(game_info, game_info->mlx_i.bg_img, px, py);
+	}
+}
 int	check_advancement(t_game *game_info, int y, int x, int *count)
 {
 	int	px;
@@ -60,11 +84,7 @@ int	check_advancement(t_game *game_info, int y, int x, int *count)
 	py = game_info->map_i.py;
 	if (game_info->map_i.map[py + y][px + x] == 'C')
 	{
-		game_info->map_i.map[py][px] = '0';
-		game_info->map_i.map[py + y][px + x] = 'P';
-		put_image(game_info, game_info->mlx_i.bg_img, px + x, py + y);
-		put_image(game_info, game_info->mlx_i.p_img, px + x, py + y);
-		put_image(game_info, game_info->mlx_i.bg_img, px, py);
+		norm_func_move(game_info, y, x);
 		game_info->map_i.px += x;
 		game_info->map_i.py += y;
 		game_info->map_i.c--;
