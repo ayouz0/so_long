@@ -6,7 +6,7 @@
 /*   By: aaitabde <aaitabde@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 10:22:04 by aaitabde          #+#    #+#             */
-/*   Updated: 2025/01/27 16:24:14 by aaitabde         ###   ########.fr       */
+/*   Updated: 2025/02/03 14:59:16 by aaitabde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,4 +122,5 @@ void	make_move(t_game *game_info, int y, int x, int *count);
 void	put_image(t_game *game_info, void *img, int x, int y);
 void	init_imgs(t_game *game_info);
 void	init_map(t_game *game_info);
+void	norm_func_move(t_game *game_info, int y, int x);
 #endif

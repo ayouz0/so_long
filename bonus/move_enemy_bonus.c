@@ -6,7 +6,7 @@
 /*   By: aaitabde <aaitabde@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 17:55:10 by aaitabde          #+#    #+#             */
-/*   Updated: 2025/02/01 19:19:23 by aaitabde         ###   ########.fr       */
+/*   Updated: 2025/02/03 15:06:45 by aaitabde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int	move_enemy(t_game *game_info)
 
 	if (render_counter == 0)
 		re_render(game_info);
-	render_counter = (render_counter + 1) % 1000;
+	render_counter = (render_counter + 1) % 1050;
 	if (frame != 1600)
 	{
 		frame++;

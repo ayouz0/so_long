@@ -6,7 +6,7 @@
 /*   By: aaitabde <aaitabde@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 09:41:18 by aaitabde          #+#    #+#             */
-/*   Updated: 2025/02/03 13:46:43 by aaitabde         ###   ########.fr       */
+/*   Updated: 2025/02/03 14:55:23 by aaitabde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ void	norm_func_move(t_game *game_info, int y, int x)
 		put_image(game_info, game_info->mlx_i.bg_img, px, py);
 	}
 }
+
 int	check_advancement(t_game *game_info, int y, int x, int *count)
 {
 	int	px;

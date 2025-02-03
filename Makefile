@@ -6,7 +6,7 @@
 #    By: aaitabde <aaitabde@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/22 14:28:04 by aaitabde          #+#    #+#              #
-#    Updated: 2025/02/03 14:02:48 by aaitabde         ###   ########.fr        #
+#    Updated: 2025/02/03 15:00:05 by aaitabde         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ CFLAGS =  -Wall -Wextra -Werror
 
 SRC = mandatory/error_utils.c mandatory/general_utils.c mandatory/main.c mandatory/map_utils.c mandatory/get_next_line/get_next_line.c\
 	mandatory/get_next_line/get_next_line_utils.c mandatory/map_utils_1.c mandatory/so_long.c mandatory/game_running.c mandatory/make_moves.c\
-	mandatory/init_imgs.c mandatory/map_utils_2.c
+	mandatory/init_imgs.c mandatory/map_utils_2.c mandatory/norm_funcs.c
 
 SRCB = bonus/error_utils_bonus.c bonus/general_utils_bonus.c bonus/main_bonus.c bonus/map_utils_bonus.c bonus/get_next_line/get_next_line_bonus.c\
 	bonus/get_next_line/get_next_line_utils_bonus.c bonus/map_utils_1_bonus.c bonus/so_long_bonus.c bonus/game_running_bonus.c bonus/make_moves_bonus.c\
